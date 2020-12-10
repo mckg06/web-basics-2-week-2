@@ -1,39 +1,56 @@
 
 //------------------------ Question 1---------------------------
-//Write a function that ask the user for two numbers and return the product of them. But the challenge here is that you can't use the operator * (you can't make the product)
+//Write a function that ask the user for two numbers and return the product of them. But the challenge here 
+//is that you can't use the operator * (you can't make the product)
 //hint: multiplication is a sequence of sums
 
  //@param {number} number1
  //@param {number} number2
  //@return {number} product
-const multiplication = () => {
-  return
+  let question1= parseInt(prompt("Give me a number"));
+  let question2= parseInt(prompt("Give me another number"));
+
+const multiplication = (question1, question2) => {
+
+let stored = question1;
+  for (i=1; i <question2; i++){
+  stored += question1
+}
+  return stored;
 }
 
-const answer1 = multiplication()
-console.log('answer1', answer1)
+  multiplication(question1,question2);
 
 const htmlTarget = document.getElementById('a-1')
 htmlTarget.innerHTML = answer1
 
 
 
+
+
 //------------------------ Question 2 ---------------------------
-// Write a function that recieves a string as a parameter and evaluate each character of the string to determinate if the character is vowel or a consonant. you have to store each character on separates arrays, one for vowels and the other one for consonants.
-// after separating the characters concatenate both arrays. ask the user if wants the vowels first or consonants first in the final array.
+// Write a function that recieves a string as a parameter and evaluate each 
+//character of the string to determinate if the character is vowel or a consonant.
+// you have to store each character on separates arrays, one for vowels 
+// and the other one for consonants.
+// after separating the characters concatenate both arrays. 
+//ask the user if wants the vowels first or consonants first in the final array.
 //hint:
 
 //@param {string}
 //@return {character} => array of characters
-vowelOrConsonant = () => {
-  return
-}
 
-const answer2 = vowelOrConsonant()
+  var words = prompt("write something").toLowerCase().split(``);
+  const vowels= ['a', 'e', 'i', 'o', 'u'];
+  let userVowels= [];
+  let userCons= [];
 
-const htmlTarget2 = document.getElementById('a-2')
-htmlTarget2.innerHTML = answer2
-
+for (i=0; i< words.length; i++){
+  let letter= words[i];
+  if ((letter === ('a')) || (letter === 'e') || (letter ==='i') || (letter === 'o') || (letter === 'u')) {
+  userVowels.unshift(letter);
+} 
+else (userCons.unshift(letter))
 
 
 
@@ -45,9 +62,39 @@ htmlTarget2.innerHTML = answer2
 //where: name, saves the name of the player. Lives, represents the remaining oportunities each time the player fails. Fail_numbers, is an array of numbers that stores the fail numbers the player has used
 
 //@return {string} win / gameOver => the string that says if the user wasted the three oportunities showing the fails numbers or the name if the player wins
+
 guessTheNumber  = () => {
-  return
-}
+
+  const player = {
+    name: userName,
+    lives: 4,
+    fail_numbers: [],
+  }
+  
+    var userName = prompt("What is your name?");
+    let wrongAnswers=[]
+    const randomNumber = Math.floor(Math.random()*40)+10;
+  
+    while (player.lives>0)
+  {
+    var numberGuess = parseInt(prompt(`Guess a number between 10 and 50!`));
+    if (numberGuess != randomNumber) {
+  
+  alert(`that is incorrect!`);
+    player.lives--;
+    wrongAnswers.push(numberGuess);
+  
+  if (player.lives===0) {
+    alert(`game over!`);
+  } 
+
+  } else {
+    alert(`congrats, you got it!`);
+    break
+  }
+  }
+  }
+  guessTheNumber()
 
 const answer3 = guessTheNumber()
 
@@ -79,10 +126,39 @@ sort = () => {
        author: 'Suzanne Collins',
        libraryID: 3245
    }];
+ 
+  var sorting= prompt(`How would you like to sort these novels? 1 for title, 2 for author, 3 for libraryID.`);
 
-  return
+  if (sorting=='1'){
+  
+  library2 = library.sort((a,b) =>{
+    return b.title.length- a.title.length;
+  }
+  )
+  return `${library2[0].title}; ${library2[1].title};${library2[2].title}`
+  }
+  else if(sorting=='2'){
+    library2 = library.sort((a,b) =>{
+    return b.author.length- a.author.length;
+  }
+  )
+  return `${library2[0].author}; ${library2[1].author};${library2[2].author}`
+
+  } else {
+  library2 = library.sort((a,b) =>{
+    return b.libraryID- a.libraryID;
+  }
+  )
+  return `${library2[0].libraryID}; ${library2[1].libraryID};${library2[2].libraryID}`
+  }
+
+
 }
 
+ 
+
+
+alert (sort())
 const answer4 = sort()
 
 const htmlTarget4 = document.getElementById('a-4')
